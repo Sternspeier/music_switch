@@ -64,10 +64,14 @@ def music_player(filepath: str, seconds: float, flag):
 
 
 def music_looper(abba_zipped: list, mode, go_flag):
-    seconds = 180
+    seconds = 0
     index = 0
     while index < len(abba_zipped):
-        seconds = music_player(abba_zipped[index][mode.value], seconds, go_flag)
+        song = abba_zipped[index][mode.value]
+        song_split = song.split('/')
+        print(f'\n-- now playing: {song_split[-1]} in {song_split[-2]} --\n')
+
+        seconds = music_player(song, seconds, go_flag)
 
         if not go_flag.value:
             go_flag.value = True
