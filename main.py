@@ -1,6 +1,6 @@
 from pygame import mixer
-from mutagen.mp3 import MP3
 
+from mutagen.mp3 import MP3
 from multiprocessing import Process, Manager
 from time import sleep
 import os
@@ -55,17 +55,16 @@ def music_player(filepath: str, seconds: float, flag):
     mixer.init()
     mixer.music.load(filepath)
     mixer.music.play(start=seconds)
-    seconds_count = 0
     while mixer.music.get_busy():  # wait for music to finish playing
         sleep(1)
-        seconds_count += 1
+        seconds += 1
         if not flag.value: break
 
-    return seconds_count
+    return seconds
 
 
 def music_looper(abba_zipped: list, mode, go_flag):
-    seconds = 0
+    seconds = 180
     index = 0
     while index < len(abba_zipped):
         seconds = music_player(abba_zipped[index][mode.value], seconds, go_flag)
