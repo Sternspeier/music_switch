@@ -1,4 +1,5 @@
 from pygame import mixer
+from mutagen.mp3 import MP3
 
 from multiprocessing import Process, Manager
 from time import sleep
@@ -48,6 +49,9 @@ def _switcher(mode, flag):
 
 
 def music_player(filepath: str, seconds: float, flag):
+    as_mp3 = MP3(filepath)
+    if seconds >= as_mp3.info.length: return 0
+
     mixer.init()
     mixer.music.load(filepath)
     mixer.music.play(start=seconds)
