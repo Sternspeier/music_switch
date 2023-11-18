@@ -1,6 +1,7 @@
 from pygame import mixer
-from time import sleep
+
 from multiprocessing import Process, Manager
+from time import sleep
 import os
 
 
@@ -95,4 +96,5 @@ def main():
     p.join()
 
 
-main()
+if __name__ == '__main__':
+    main()
