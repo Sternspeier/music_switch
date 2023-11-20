@@ -83,8 +83,8 @@ def music_looper(abba_zipped: list, mode, go_flag):
 
 def main():
     music_path = _get_path('music')
-    abba_eight_bit = _get_abba_files('eight_bit', music_path)
-    abba_orchestra = _get_abba_files('orchestra', music_path)
+    abba_eight_bit = sorted(_get_abba_files('eight_bit', music_path))
+    abba_orchestra = sorted(_get_abba_files('orchestra', music_path))
 
     if not _fool_proof_abba(abba_eight_bit, abba_orchestra):
         return
